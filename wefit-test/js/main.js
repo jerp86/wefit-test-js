@@ -53,12 +53,44 @@ const alterCardOrder = () => {
 
 const changeCards = () => {
   alterCardOrder()
-
+  
   const cardsTitle = document.querySelectorAll('.card-title');
   addTitleDataset(cardsTitle)
   changeColorButtonCard('Animais')
 }
 
+const newLi = ({ text, isActive = false }) => {
+  const contentText = document.createTextNode(text)
+  
+  const li = document.createElement('li')
+  li.classList.add('list-group-item')
+
+  if (isActive) {
+    li.classList.add('active')
+  }
+
+  li.appendChild(contentText)
+
+  return li
+}
+
+const removeActiveClass = () => {
+  const liActive = document.querySelector('li.active')
+  liActive.classList.remove('active')
+}
+
+const changeList = () => {
+  removeActiveClass()
+
+  const ul = document.querySelector('ul.list-group')
+  const fourthLi = newLi({ text: 'Quarto item', isActive: true })
+  const fifthLi = newLi({ text: 'Quinto item' })
+
+  ul.appendChild(fourthLi)
+  ul.appendChild(fifthLi)
+}
+
 changeMenuToHorizontal()
 changeHeaderBox()
 changeCards()
+changeList()
