@@ -268,3 +268,18 @@ textarea {
   aspect-ratio: 1.67;
   object-fit: cover;
 }
+
+#easter-egg {
+	position: absolute;
+	top: calc(50% - 240px);
+	left: calc(50% - 240px);
+
+  aspect-ratio: 1;
+  object-fit: cover;
+	opacity: 0;
+	transition: opacty .5s ease-in-out;
+}
+
+#easter-egg[data-status="active"] {
+	opacity: 1;
+}
