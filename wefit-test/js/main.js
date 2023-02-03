@@ -24,5 +24,41 @@ const changeHeaderBox = () => {
   changeHeaderStyles()
 }
 
+const addTitleDataset = (nodeList) => {
+  nodeList.forEach((title) => {
+    const nearCard = title.closest('div.card');
+    nearCard.dataset['title'] = title.textContent;
+  })
+}
+
+const changeColorButtonCard = (dataTitle) => {
+  const button = document.querySelector(`[data-title="${dataTitle}"] .btn-primary`);
+  button.classList.remove('btn-primary');
+  button.classList.add('btn-success');
+}
+
+const putBefore = (nodeList, from, to) => {
+  const parent = nodeList[to].offsetParent.parentElement
+  parent.insertBefore(
+    nodeList[from].offsetParent,
+    nodeList[to].offsetParent,
+  )
+}
+
+const alterCardOrder = () => {
+  const cards = document.querySelectorAll('.card');
+  putBefore(cards, 3, 0)
+  putBefore(cards, 2, 1)
+}
+
+const changeCards = () => {
+  alterCardOrder()
+
+  const cardsTitle = document.querySelectorAll('.card-title');
+  addTitleDataset(cardsTitle)
+  changeColorButtonCard('Animais')
+}
+
 changeMenuToHorizontal()
 changeHeaderBox()
+changeCards()
