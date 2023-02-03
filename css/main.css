@@ -264,3 +264,7 @@ textarea {
   }
 }
 
+.performance-img {
+  aspect-ratio: 1.67;
+  object-fit: cover;
+}
